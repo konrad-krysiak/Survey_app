@@ -1,0 +1,4 @@
+<div class="mb-4">
+    <%= label_tag :title_label, "Question #{local_assigns[:iterator] + 1}: ", class: "form-label"%>
+    <%= text_area_tag "questions[][content]", nil, class: "form-control" %>
+</div>

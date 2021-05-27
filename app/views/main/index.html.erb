@@ -1,0 +1,23 @@
+
+<section class="hero">
+	<div class="background-image"></div>
+	<h1>Welcome on the board!</h1>
+	<h3>Create and share surveys!</h3>
+	<%= link_to "Create new survey", new_survey_path, class: "create-button" %>
+</section>
+
+<% if false %>
+<ul class="list-group list-group-flush">
+	<% @surveys.each do |survey| %>
+		<% if survey.questions.count == 0 %>
+			<% survey.destroy %>
+		<% else %>
+			<li class="list-group-item"> 
+			ID: <%= survey.id %>, Title: <%= survey.title %>, QC: <%= survey.questions.count %>
+			<%= link_to "Show", survey_path(survey) %>
+			<%= link_to "Answer", new_survey_answer_path(survey.id) %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+<% end %>

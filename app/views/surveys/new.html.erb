@@ -1,0 +1,35 @@
+<section class="new-survey">
+    <div class="background-image"></div>
+
+    <h3 class="title">Create new survey</h1>
+
+    <% if @survey&.invalid? %>
+        <% @survey.errors.full_messages.each do |error| %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% end %>
+    <% end %>
+
+    <%= form_with model: Survey.new do |form| %>
+        <div class="mb-4">
+            <%= form.text_field :title, class: "form-control" %>
+            <%= form.label :title_label, "Title: ", class: "form-label"%>
+        </div>
+
+        <div class="mb-4">
+            <%= form.text_field :question_count, class: "form-control" %>
+            <%= form.label :question_count_label, "Question count: ", class: "form-label"%>
+        </div>
+
+        <div class="mb-4">
+            <%= form.text_field :email, class: "form-control" %>
+            <%= form.label :email_label, "email: ", class: "form-label"%>
+        </div>
+
+        <div class="mb-6">
+            <%= form.submit "Create Survey", class: "btn btn-primary btn-lg" %>
+        </div>
+    <% end %>
+
+</section>

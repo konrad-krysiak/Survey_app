@@ -1,0 +1,19 @@
+<section class="answer-new">
+	<div class="background-image"></div>
+	<% if @survey.invalid? %>
+		<% @survey.errors.full_messages.each do |error| %>
+			<div class="alert alert-danger">
+				<%= error %>
+			</div>
+		<% end %>
+		</ul>
+	<% end %>
+	
+	<h1 class="title">Answer to <%= @survey.title %> questions!</h3>
+	<%= form_tag("/surveys/#{@survey_id}/answers") do %>
+		<% @questions.each do |question| %>
+			<%= render 'group_member_form', question: question %> 
+		<% end %>
+	<%= submit_tag "Submit", class: "btn btn-primary btn-lg" %>
+	<% end %>
+</section>

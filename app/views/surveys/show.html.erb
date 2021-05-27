@@ -1,0 +1,56 @@
+
+<section class="survey-show">
+    <div class="background-image"></div>
+    <h3 class="title"><%= @survey.title %></h3>
+    <ul class="list-group question-container">
+        <li class="list-group-item active">Questions</li>
+        <% @survey.questions.each do |question| %>
+        <li class="list-group-item"> <%= question.content %> </li>
+        <% end %>
+    </ul>
+    <div class="alert alert-dark">Survey link: /surveys/<%=@survey.id%></div>
+    <div class="alert alert-dark">Share: /<%=@survey.publicUrl%></div>
+
+</section>
+
+<section class="survey-show-p2">
+    <h3 class="display-4">Answers</h3>
+    <hr>
+    <div class="answers-box">
+        <% if @survey.questions.first.answers.size == 0 %>
+            <h4> No answers yet.</h1>
+        <% else %>
+            <% @survey.questions.each do |question| %>
+            <h3> <%= question.content %> </h3>
+            <ul class="list-group list-group-flush">
+                <% question.answers.each do |answer| %>
+                <li class="list-group-item">
+                    <%= answer.content %>
+                </li>
+                <% end %>
+            </ul>
+            <br>
+            <% end %>
+        <% end %>
+    </div>
+
+
+
+    <%= link_to 'Destroy Survey', survey_path(@survey), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-lg" %>
+
+
+
+
+
+    <% if false %>
+        <% @survey.questions.each do |question| %>
+            <h3> <%= question.content %> </h3>
+            <% question.answers.each do |answer| %>
+                <li> <%= answer.content %> </li>
+            <% end %>
+        <% end %>
+    <% end %>
+
+</section>
+
+

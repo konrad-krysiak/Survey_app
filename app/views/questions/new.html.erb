@@ -1,0 +1,18 @@
+<section class="questions">
+	<div class="background-image"></div>
+	<% if @survey&.invalid? %>
+		<% @survey.errors.full_messages.each do |error| %>
+			<div class="alert alert-danger">
+				<%= error %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<%= form_tag("/surveys/#{@survey_id}/questions", class: 'questions_form') do %>
+	<% @question_quantity.times do |iterator| %>
+		<%= render 'group_member_form', iterator: iterator %>    
+	<% end %>
+	<%= submit_tag "Submit", class: "btn btn-primary btn-lg" %>
+	<% end %>
+</section>
+

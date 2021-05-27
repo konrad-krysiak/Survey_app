@@ -1,0 +1,8 @@
+<div class="row mb-3 d-flex justify-content-center">
+    <%= label_tag :title_label, " #{local_assigns[:question][:content]}?", class: "col-sm-3 col-form-label"%>
+    </br>
+    <div class="col-sm-9">
+        <%= text_area_tag "answers[][content]", nil, class: "form-control" %>
+        <%= hidden_field_tag "answers[][question_id]", local_assigns[:question][:id] %>
+    </div>
+</div>
