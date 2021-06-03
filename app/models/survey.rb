@@ -11,7 +11,8 @@ class Survey < ApplicationRecord
     accepts_nested_attributes_for :questions
 
     validates :title, presence: true
-    validates :title, length: { in: 3..15 }
+    validates :title, length: { in: 5..50 }
+    validates :title, format: { with: /\A[a-zA-Z0-9 ]*\z/ }
     validates :question_count, numericality: { only_integer: true }
     validates :question_count, inclusion: 1..10
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -19,7 +20,7 @@ class Survey < ApplicationRecord
     validate :validate_survey_limit, on: :create
 
     def validate_survey_limit
-        if(Survey.where( email: self.email ).count >= 7)
+        if(Survey.where( email: self.email ).count >= 10)
             self.errors.add(:base, "User exceeded survey limit!")
         end
     end

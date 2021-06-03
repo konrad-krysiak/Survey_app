@@ -5,5 +5,5 @@ class Question < ApplicationRecord
 
 	validates :content, presence: true
 	validates :content, length: { in: 3..50 }
-	validates :content, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+	validates :content, uniqueness: true
 end

@@ -2,7 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  let!(:question) { create(:question, content: "How are you today?") }
+  let!(:survey) { create(:survey, title: "Test survey", question_count: 2) }
+  let!(:question) { survey.questions.create(content: "How are you today?") }
 
   context "Survey" do
     it "should not be valid" do
@@ -13,23 +14,18 @@ RSpec.describe Question, type: :model do
 
   context "Content" do
     it "should not be valid if longer than 50 characters" do
-      question.update(content: 51 * "A")
+      question.update(content: "A" * 51)
       expect(question).not_to be_valid
     end
 
-    it "should be valid if shorter or equal 50 characters" do
-      question.update(content: 50 * "A")
+    it "should not be valid if shorter than 3 characters" do
+      question.update(content: "aa")
+      expect(question).not_to be_valid
+    end
+
+    it "should be valid if shorter or equal 50 characters and longer than 2 characters" do
+      question.update(content: "A" * 50)
       expect(question).to be_valid
-    end
-
-    it "should be at least 5 characters long" do
-      question.update(content: "WHY?")
-      expect(question).not_to be_valid
-    end
-    
-    it "should contain question mark" do
-      question.update(content: "Maybe some banana")
-      expect(question).not_to be_valid
     end
 
     it "should be unique in survey" do
