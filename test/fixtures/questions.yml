@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Content: 
+  id: 121
+  survey_id: 100
+  content: "test question one"
 
 two:
-  Content: 
+  id: 122
+  survey_id: 100
+  content: "test question two"

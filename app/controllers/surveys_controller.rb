@@ -5,6 +5,9 @@ class SurveysController < ApplicationController
     def new
     end
 
+    def update
+    end
+
     def create
         @survey = Survey.new(survey_params)
         if @survey.save

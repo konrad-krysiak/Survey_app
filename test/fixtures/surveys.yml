@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Id: 
-  Name: 
-  QuestionCount: 
+  id: 100
+  title: "Some Title"
+  question_count: 2
+  email: "asd@asd.com"
+  publicUrl: "e04dfc988ea7f09ffd40"
 
 two:
-  Id: 
-  Name: 
-  QuestionCount: 
+  id: "101"
+  title: "Some Title2"
+  question_count: 1
+  email: "asd@asd.com"
+  publicUrl: "e04dfc988ea7f09ffd30"

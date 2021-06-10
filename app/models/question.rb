@@ -5,5 +5,4 @@ class Question < ApplicationRecord
 
 	validates :content, presence: true
 	validates :content, length: { in: 3..50 }
-	validates :content, uniqueness: true
 end
